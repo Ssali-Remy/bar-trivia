@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Trivia — Bar Quiz Night</title>
+  <script>
+    // ?role= router so a single QR/base URL can deep-link each interface:
+    //   index.html?role=master  -> master.html
+    //   index.html?role=display -> display.html
+    //   index.html?role=play    -> play.html
+    const role = new URLSearchParams(location.search).get("role");
+    if (["master", "display", "play"].includes(role)) {
+      location.replace(role + ".html");
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/theme.css" />
+</head>
+<body class="min-h-screen flex items-center justify-center p-6">
+  <main class="max-w-3xl w-full text-center">
+    <h1 class="text-5xl md:text-7xl font-black neon-pink anim-flicker mb-2">NEON TRIVIA</h1>
+    <p class="text-lg neon-blue mb-10 tracking-widest uppercase">Bar Quiz Night · Pick your poison</p>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <a href="play.html" class="panel panel-green p-8 block hover:scale-105 transition-transform">
+        <div class="text-5xl mb-3">🍻</div>
+        <h2 class="text-2xl font-black neon-green mb-2">PLAY</h2>
+        <p class="text-sm" style="color:var(--ink-dim)">Join with your team and smash those buttons.</p>
+      </a>
+      <a href="display.html" class="panel panel-blue p-8 block hover:scale-105 transition-transform">
+        <div class="text-5xl mb-3">📺</div>
+        <h2 class="text-2xl font-black neon-blue mb-2">BIG SCREEN</h2>
+        <p class="text-sm" style="color:var(--ink-dim)">Projector view — QR code, questions & leaderboard.</p>
+      </a>
+      <a href="master.html" class="panel p-8 block hover:scale-105 transition-transform">
+        <div class="text-5xl mb-3">🎙️</div>
+        <h2 class="text-2xl font-black neon-pink mb-2">QUIZ MASTER</h2>
+        <p class="text-sm" style="color:var(--ink-dim)">The control room. PIN required.</p>
+      </a>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Trivia — Quiz Master</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/theme.css" />
+</head>
+<body class="min-h-screen p-4 md:p-6">
+
+  <!-- ============ PIN GATE ============ -->
+  <section id="view-pin" class="hidden min-h-screen flex items-center justify-center">
+    <div class="panel p-8 w-full max-w-xs text-center">
+      <h1 class="text-2xl font-black neon-pink mb-4">🎙️ QUIZ MASTER</h1>
+      <input id="pin-input" type="password" inputmode="numeric" placeholder="PIN"
+             class="w-full text-center text-2xl mb-4" />
+      <button id="btn-pin" class="btn btn-pink w-full py-3">ENTER</button>
+      <p id="pin-error" class="hidden neon-red text-sm mt-3 font-bold">Wrong PIN, nice try.</p>
+    </div>
+  </section>
+
+  <!-- ============ DASHBOARD ============ -->
+  <main id="view-dash" class="hidden max-w-7xl mx-auto">
+    <header class="flex flex-wrap items-center justify-between gap-4 mb-6">
+      <h1 class="text-3xl font-black neon-pink">🎙️ QM CONTROL ROOM</h1>
+      <div class="flex items-center gap-4">
+        <span id="m-phase" class="px-3 py-1 rounded-full text-sm font-bold border border-current neon-blue uppercase"></span>
+        <span id="m-timer" class="text-3xl font-black neon-green tabular-nums">—</span>
+      </div>
+    </header>
+
+    <div class="grid lg:grid-cols-3 gap-6">
+
+      <!-- ===== LEFT: game flow controls + current question ===== -->
+      <div class="space-y-6">
+        <div class="panel p-5">
+          <h2 class="font-black neon-blue uppercase text-sm tracking-widest mb-4">Game Flow</h2>
+          <div class="grid grid-cols-2 gap-3">
+            <button id="btn-start"   class="btn btn-green py-3 col-span-2">▶ START GAME</button>
+            <button id="btn-pause"   class="btn btn-ghost py-3">⏸ PAUSE</button>
+            <button id="btn-resume"  class="btn btn-ghost py-3">⏵ RESUME</button>
+            <button id="btn-reveal"  class="btn btn-pink py-3 col-span-2">👁 REVEAL & SCORE</button>
+            <button id="btn-next"    class="btn btn-blue py-3 col-span-2">⏭ NEXT QUESTION</button>
+            <button id="btn-sd"      class="btn btn-red py-3 col-span-2">⚡ SUDDEN DEATH</button>
+            <button id="btn-sd-reveal" class="btn btn-red py-3 col-span-2">⚡ RESOLVE SUDDEN DEATH</button>
+            <button id="btn-reset"   class="btn btn-ghost py-3 col-span-2 text-xs">🗑 RESET GAME (new night)</button>
+          </div>
+        </div>
+
+        <div class="panel p-5">
+          <h2 class="font-black neon-blue uppercase text-sm tracking-widest mb-3">Current Question</h2>
+          <p id="m-qmeta" class="text-xs neon-gold font-bold mb-2"></p>
+          <p id="m-qtext" class="font-bold mb-3">—</p>
+          <ul id="m-qopts" class="space-y-1 text-sm"></ul>
+          <p id="m-answercount" class="text-xs mt-3" style="color:var(--ink-dim)"></p>
+        </div>
+      </div>
+
+      <!-- ===== MIDDLE: live team roster + score overrides ===== -->
+      <div class="panel p-5">
+        <h2 class="font-black neon-green uppercase text-sm tracking-widest mb-4">
+          Teams <span id="m-teamcount" class="neon-gold"></span>
+        </h2>
+        <div id="m-roster" class="space-y-3 max-h-[70vh] overflow-y-auto pr-1"></div>
+      </div>
+
+      <!-- ===== RIGHT: DQ alert log + sudden death answers ===== -->
+      <div class="space-y-6">
+        <div class="panel p-5" style="border-color:rgba(255,59,92,.4)">
+          <h2 class="font-black neon-red uppercase text-sm tracking-widest mb-4">🚨 Disqualification Alert Log</h2>
+          <div id="m-dqlog" class="space-y-2 max-h-[40vh] overflow-y-auto text-sm"></div>
+        </div>
+
+        <div id="m-sd-panel" class="hidden panel p-5" style="border-color:rgba(255,210,63,.4)">
+          <h2 class="font-black neon-gold uppercase text-sm tracking-widest mb-3">⚡ Sudden Death Answers</h2>
+          <p class="text-xs mb-3" style="color:var(--ink-dim)">Correct answer: <span id="m-sd-answer" class="neon-green font-bold"></span></p>
+          <div id="m-sd-answers" class="space-y-2 text-sm"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/questions.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/master.js"></script>
+</body>
+</html>

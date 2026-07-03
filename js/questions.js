@@ -1,0 +1,145 @@
+/* =============================================================
+   BAR TRIVIA — QUESTION BANK
+   5 rounds x 10 questions, 4 options each. `correct` is the
+   0-based index into `options`. Swap these out freely — the
+   engine only cares about the shape of the data.
+   The hidden 6th entry is the SUDDEN DEATH numeric tiebreaker.
+   ============================================================= */
+
+const ROUNDS = [
+  {
+    title: "Round 1 — Pop Culture Chaos",
+    questions: [
+      { text: "Taylor Swift's 2024 double album was 'The Tortured ______ Department'.",
+        options: ["Lovers", "Poets", "Exes", "Bartenders"], correct: 1 },
+      { text: "In 'The Hangover', what animal do the boys find in their Vegas bathroom?",
+        options: ["A tiger", "A camel", "A chimpanzee", "Mike Tyson's pigeon"], correct: 0 },
+      { text: "Kris Jenner is the self-appointed 'momager' of which famous family?",
+        options: ["The Osbournes", "The Hiltons", "The Kardashians", "The Baldwins"], correct: 2 },
+      { text: "Which dating app made 'swipe right' part of the language?",
+        options: ["Hinge", "Bumble", "Grindr", "Tinder"], correct: 3 },
+      { text: "Who froze to death because Rose wouldn't share the door in 'Titanic'?",
+        options: ["Brad Pitt", "Leonardo DiCaprio", "Johnny Depp", "Matt Damon"], correct: 1 },
+      { text: "Which superstar answers to 'Queen Bey'?",
+        options: ["Rihanna", "Madonna", "Beyoncé", "Lady Gaga"], correct: 2 },
+      { text: "Complete Joey Tribbiani's legendary pickup line: 'How YOU ______?'",
+        options: ["been", "doin'", "livin'", "drinkin'"], correct: 1 },
+      { text: "In 'The Matrix', which pill does Neo swallow?",
+        options: ["The red pill", "The blue pill", "Both, it was the 90s", "A breath mint"], correct: 0 },
+      { text: "The most-viewed YouTube video of all time is which earworm?",
+        options: ["Gangnam Style", "Despacito", "Baby Shark Dance", "Never Gonna Give You Up"], correct: 2 },
+      { text: "Snoop Dogg's unlikely cooking-show bestie is which domestic icon?",
+        options: ["Gordon Ramsay", "Martha Stewart", "Paula Deen", "Guy Fieri"], correct: 1 },
+    ],
+  },
+  {
+    title: "Round 2 — Booze History & Bar Lore",
+    questions: [
+      { text: "The whisky that evaporates from the barrel while ageing is romantically called what?",
+        options: ["The devil's cut", "The angel's share", "Barrel tax", "Ghost proof"], correct: 1 },
+      { text: "IPA — the beer your one friend won't shut up about — stands for what?",
+        options: ["Irish Pale Ale", "Imperial Pub Ale", "India Pale Ale", "Intense Percentage Alcohol"], correct: 2 },
+      { text: "US Prohibition finally died of embarrassment in which year?",
+        options: ["1929", "1933", "1941", "1925"], correct: 1 },
+      { text: "Which monk is (dubiously) credited with inventing champagne?",
+        options: ["Dom Pérignon", "Friar Tuck", "Brother Bordeaux", "Dom Corleone"], correct: 0 },
+      { text: "Real tequila must be made from which plant?",
+        options: ["Cactus", "Sugarcane", "Blue agave", "Desperation"], correct: 2 },
+      { text: "Guinness has been brewed since 1759 in which city?",
+        options: ["Belfast", "Glasgow", "Cork", "Dublin"], correct: 3 },
+      { text: "'Vodka' roughly translates from Russian as what?",
+        options: ["Fire water", "Little water", "Clear spirit", "Regret"], correct: 1 },
+      { text: "A magnum of champagne holds how many standard bottles?",
+        options: ["2", "4", "6", "8"], correct: 0 },
+      { text: "White rum, mint, lime, sugar and soda water make which cocktail?",
+        options: ["Daiquiri", "Caipirinha", "Mojito", "Mint Julep"], correct: 2 },
+      { text: "'Cenosillicaphobia' is the (very real) fear of what?",
+        options: ["Last call", "An empty glass", "Warm beer", "Sober Mondays"], correct: 1 },
+    ],
+  },
+  {
+    title: "Round 3 — Nudge Nudge, Wink Wink",
+    questions: [
+      { text: "A 'Slippery Nipple' and a 'Screaming Orgasm' are both types of what?",
+        options: ["Yoga poses", "Cocktails", "Wrestling moves", "Weather warnings"], correct: 1 },
+      { text: "In cricket, a 'maiden over' is an over in which what happens?",
+        options: ["No runs are scored", "A player is bowled out", "The batter scores six", "Tea is served"], correct: 0 },
+      { text: "'Ménage à trois' literally translates from French as what?",
+        options: ["Three's a crowd", "Household of three", "Triple trouble", "Three-course meal"], correct: 1 },
+      { text: "The Kama Sutra, the world's most quoted-but-unread book, comes from which country?",
+        options: ["Greece", "Japan", "India", "France"], correct: 2 },
+      { text: "Which planet is named after the goddess of love?",
+        options: ["Mars", "Venus", "Neptune", "Uranus, obviously"], correct: 1 },
+      { text: "A 'growler' — get your mind out of the gutter — is a container for what?",
+        options: ["Beer", "Whisky", "Pickles", "Bar snacks"], correct: 0 },
+      { text: "A 'shag' is a dance, a carpet, and also a bird from which family?",
+        options: ["Penguins", "Pelicans", "Cormorants", "Puffins"], correct: 2 },
+      { text: "The blue-footed booby — stop giggling — is what kind of animal?",
+        options: ["A frog", "A seabird", "A crab", "A very cold monkey"], correct: 1 },
+      { text: "Oysters owe their entire reputation to being considered what?",
+        options: ["An aphrodisiac", "A cure for hangovers", "Lucky", "Vegetarian"], correct: 0 },
+      { text: "A 'Sex on the Beach' contains vodka, peach schnapps and which two juices?",
+        options: ["Pineapple & lime", "Orange & cranberry", "Apple & grape", "Tomato & regret"], correct: 1 },
+    ],
+  },
+  {
+    title: "Round 4 — General Knowledge (With a Twist)",
+    questions: [
+      { text: "How many bones are in the adult human body (before the mechanical bull)?",
+        options: ["186", "206", "226", "306"], correct: 1 },
+      { text: "The capital of Australia — and no, it's not the one you're thinking of — is?",
+        options: ["Sydney", "Melbourne", "Perth", "Canberra"], correct: 3 },
+      { text: "The '40' in WD-40 stands for what?",
+        options: ["40% alcohol", "The 40th formula attempt", "40 uses", "Invented in 1940"], correct: 1 },
+      { text: "Chili pepper heat is measured on which scale?",
+        options: ["Richter", "Scoville", "Kelvin", "Fahrenheit"], correct: 1 },
+      { text: "How many hearts does an octopus have?",
+        options: ["1", "2", "3", "8"], correct: 2 },
+      { text: "Which element struts around the periodic table as 'Au'?",
+        options: ["Silver", "Aluminium", "Gold", "Argon"], correct: 2 },
+      { text: "Which of these 'facts' is actually a myth?",
+        options: ["Honey never spoils", "Octopuses have blue blood", "The Great Wall is visible from the Moon", "Bananas are berries"], correct: 2 },
+      { text: "A fortnight is exactly how many days?",
+        options: ["4", "10", "14", "40"], correct: 2 },
+      { text: "Which of these animals physically cannot jump?",
+        options: ["Hippo", "Elephant", "Rhino", "Your team captain"], correct: 1 },
+      { text: "Which planet is closest to the sun?",
+        options: ["Venus", "Mars", "Mercury", "Earth"], correct: 2 },
+    ],
+  },
+  {
+    title: "Round 5 — Music & Movies After Dark",
+    questions: [
+      { text: "Who directed 'Pulp Fiction' and has a well-documented thing about feet?",
+        options: ["Martin Scorsese", "Quentin Tarantino", "David Fincher", "Guy Ritchie"], correct: 1 },
+      { text: "'Bohemian Rhapsody' — the ultimate 2am singalong — is by which band?",
+        options: ["Queen", "The Rolling Stones", "Led Zeppelin", "ABBA"], correct: 0 },
+      { text: "The Dude in 'The Big Lebowski' abides with which cocktail?",
+        options: ["Old Fashioned", "Margarita", "White Russian", "Espresso Martini"], correct: 2 },
+      { text: "Amy Winehouse famously said 'no, no, no' to going where?",
+        options: ["On tour", "To rehab", "To Vegas", "Home"], correct: 1 },
+      { text: "Which rapper's government name is Marshall Mathers III?",
+        options: ["Dr. Dre", "Jay-Z", "Eminem", "50 Cent"], correct: 2 },
+      { text: "In 'Grease', Danny and Sandy attend which high school?",
+        options: ["Rydell High", "Ridgemont High", "Bayside High", "Shermer High"], correct: 0 },
+      { text: "The world's horniest saxophone riff, 'Careless Whisper', is by whom?",
+        options: ["Kenny G", "George Michael", "Phil Collins", "Sting"], correct: 1 },
+      { text: "'You can't handle the truth!' is bellowed in which film?",
+        options: ["Top Gun", "A Few Good Men", "The Firm", "Jerry Maguire"], correct: 1 },
+      { text: "ABBA, the soundtrack to every questionable wedding decision, hails from where?",
+        options: ["Norway", "Denmark", "Sweden", "Finland"], correct: 2 },
+      { text: "Highest-grossing film of all time (not adjusted for inflation)?",
+        options: ["Titanic", "Avengers: Endgame", "Avatar", "Star Wars: The Force Awakens"], correct: 2 },
+    ],
+  },
+];
+
+/* SUDDEN DEATH — hidden numeric tiebreaker. Closest answer wins. */
+const SUDDEN_DEATH = {
+  text: "Guinness claims that roughly how many glasses of Guinness are poured worldwide EVERY DAY? (Closest answer wins!)",
+  answer: 10000000, // ~10 million glasses per day
+  answerLabel: "≈ 10,000,000 glasses",
+};
+
+const TOTAL_ROUNDS = ROUNDS.length;
+const QUESTIONS_PER_ROUND = 10;

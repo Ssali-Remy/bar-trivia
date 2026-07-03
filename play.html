@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Neon Trivia — Play</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/theme.css" />
+</head>
+<body class="min-h-screen">
+
+  <!-- ============ REGISTRATION ============ -->
+  <section id="view-register" class="hidden min-h-screen flex flex-col items-center justify-center p-6">
+    <h1 class="text-4xl font-black neon-pink mb-1">NEON TRIVIA</h1>
+    <p class="mb-8 tracking-widest uppercase text-sm" style="color:var(--ink-dim)">Register your squad</p>
+    <div class="panel p-6 w-full max-w-sm">
+      <label class="block text-sm font-bold neon-blue mb-2 uppercase tracking-wider">Team Name</label>
+      <input id="team-name-input" maxlength="24" placeholder="e.g. Tequila Mockingbird"
+             class="w-full text-lg mb-4" autocomplete="off" />
+      <button id="btn-join" class="btn btn-pink w-full py-4 text-xl">JOIN THE GAME 🍻</button>
+      <p id="register-error" class="hidden text-sm neon-red mt-3 font-bold"></p>
+      <p class="text-xs mt-4" style="color:var(--ink-dim)">
+        ⚠️ Heads up: leaving this app during a question = instant disqualification. Eyes on the prize.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ LOBBY / WAITING ============ -->
+  <section id="view-lobby" class="hidden min-h-screen flex flex-col items-center justify-center p-6 text-center">
+    <div class="text-6xl mb-4 anim-pulse">🍺</div>
+    <h2 class="text-3xl font-black neon-green mb-2">You're in, <span id="lobby-team-name"></span>!</h2>
+    <p id="lobby-msg" style="color:var(--ink-dim)">Waiting for the Quiz Master to start the mayhem…</p>
+  </section>
+
+  <!-- ============ QUESTION ============ -->
+  <section id="view-question" class="hidden min-h-screen flex flex-col p-4 max-w-lg mx-auto">
+    <header class="flex items-center justify-between py-2">
+      <span id="q-meta" class="text-xs font-bold uppercase tracking-widest neon-blue"></span>
+      <span id="q-timer" class="text-3xl font-black neon-green tabular-nums">30</span>
+    </header>
+
+    <p id="q-text" class="text-xl font-bold leading-snug my-4"></p>
+
+    <!-- Double Down -->
+    <label id="dd-wrap" class="panel p-3 flex items-center gap-3 mb-4 cursor-pointer">
+      <input id="dd-check" type="checkbox" class="w-6 h-6 accent-pink-500" />
+      <span class="text-sm font-bold">
+        <span class="neon-gold">🎲 DOUBLE DOWN</span>
+        <span class="block font-normal text-xs" style="color:var(--ink-dim)">
+          Win double points… or LOSE 10 if you're wrong. Once per round!</span>
+      </span>
+    </label>
+
+    <div id="answers" class="grid grid-cols-1 gap-3 flex-1 content-start">
+      <!-- 4 answer buttons injected by play.js -->
+    </div>
+  </section>
+
+  <!-- ============ ANSWERED / WAITING ============ -->
+  <section id="view-answered" class="hidden min-h-screen flex flex-col items-center justify-center p-6 text-center">
+    <div class="text-6xl mb-4">🔒</div>
+    <h2 class="text-2xl font-black neon-blue mb-2">Answer locked in!</h2>
+    <p id="answered-detail" class="font-bold mb-2"></p>
+    <p style="color:var(--ink-dim)">Waiting for the next question…</p>
+  </section>
+
+  <!-- ============ RESULT (after reveal) ============ -->
+  <section id="view-result" class="hidden min-h-screen flex flex-col items-center justify-center p-6 text-center">
+    <div id="result-emoji" class="text-7xl mb-4"></div>
+    <h2 id="result-title" class="text-4xl font-black mb-2"></h2>
+    <p id="result-points" class="text-2xl font-bold mb-1"></p>
+    <p id="result-streak" class="text-lg neon-gold"></p>
+    <p class="mt-4" style="color:var(--ink-dim)">Score: <span id="result-score" class="font-black neon-blue text-xl"></span></p>
+  </section>
+
+  <!-- ============ SUDDEN DEATH ============ -->
+  <section id="view-sd" class="hidden min-h-screen flex flex-col items-center justify-center p-6 max-w-lg mx-auto">
+    <h2 class="text-3xl font-black neon-red anim-pulse mb-4">⚡ SUDDEN DEATH ⚡</h2>
+    <p id="sd-text" class="text-lg font-bold text-center mb-6"></p>
+    <input id="sd-input" type="number" inputmode="numeric" placeholder="Your number…" class="w-full text-2xl text-center mb-4" />
+    <button id="btn-sd-submit" class="btn btn-red w-full py-4 text-xl">LOCK IT IN</button>
+    <p id="sd-done" class="hidden mt-4 neon-green font-bold">Answer submitted. Sweat it out. 😅</p>
+  </section>
+
+  <!-- ============ GAME OVER ============ -->
+  <section id="view-over" class="hidden min-h-screen flex flex-col items-center justify-center p-6 text-center">
+    <div class="text-6xl mb-4">🏁</div>
+    <h2 class="text-3xl font-black neon-pink mb-2">That's a wrap!</h2>
+    <p class="text-xl mb-1">You finished <span id="over-rank" class="font-black neon-gold"></span></p>
+    <p style="color:var(--ink-dim)">Final score: <span id="over-score" class="font-black neon-blue"></span></p>
+  </section>
+
+  <!-- ============ LOCKED BY QM ============ -->
+  <section id="view-locked" class="hidden min-h-screen flex flex-col items-center justify-center p-6 text-center">
+    <div class="text-6xl mb-4">⛔</div>
+    <h2 class="text-2xl font-black neon-gold mb-2">Team locked by the Quiz Master</h2>
+    <p style="color:var(--ink-dim)">Go plead your case at the bar.</p>
+  </section>
+
+  <!-- ============ DISQUALIFIED — full red lockout ============ -->
+  <section id="view-dq" class="hidden dq-screen min-h-screen flex flex-col items-center justify-center p-6 text-center fixed inset-0 z-50">
+    <div class="text-7xl mb-6 anim-shake">🚨</div>
+    <h2 class="text-5xl font-black text-white mb-4" style="text-shadow:0 0 20px #ff3b5c">DISQUALIFIED</h2>
+    <p class="text-xl font-bold text-white mb-2">You left the app.</p>
+    <p class="text-lg text-white/90">See the Quiz Master to be re-admitted.</p>
+  </section>
+
+  <!-- Firebase compat SDKs (simple script-tag friendly builds) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/questions.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/play.js"></script>
+</body>
+</html>

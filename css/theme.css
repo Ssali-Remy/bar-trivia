@@ -1,0 +1,147 @@
+/* =============================================================
+   BAR TRIVIA — "NEON CYBER-PUB" THEME
+   Deep blacks & purples, neon pink / green / blue accents.
+   Tailwind (CDN) handles layout; this file owns the vibe.
+   ============================================================= */
+
+:root {
+  --bg-deep:    #0a0612;
+  --bg-panel:   #150b26;
+  --bg-card:    #1d1135;
+  --neon-pink:  #ff2fb3;
+  --neon-blue:  #29d8ff;
+  --neon-green: #39ff8e;
+  --neon-gold:  #ffd23f;
+  --neon-red:   #ff3b5c;
+  --ink:        #f4ecff;
+  --ink-dim:    #9d8cc2;
+}
+
+html, body {
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(122, 44, 191, .25), transparent 60%),
+    radial-gradient(900px 500px at 10% 110%, rgba(41, 216, 255, .12), transparent 60%),
+    var(--bg-deep);
+  color: var(--ink);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  min-height: 100%;
+}
+
+/* ---------- neon text & panels ------------------------------- */
+
+.neon-pink  { color: var(--neon-pink);  text-shadow: 0 0 8px rgba(255,47,179,.8), 0 0 30px rgba(255,47,179,.45); }
+.neon-blue  { color: var(--neon-blue);  text-shadow: 0 0 8px rgba(41,216,255,.8), 0 0 30px rgba(41,216,255,.45); }
+.neon-green { color: var(--neon-green); text-shadow: 0 0 8px rgba(57,255,142,.8), 0 0 30px rgba(57,255,142,.45); }
+.neon-gold  { color: var(--neon-gold);  text-shadow: 0 0 8px rgba(255,210,63,.8), 0 0 30px rgba(255,210,63,.45); }
+.neon-red   { color: var(--neon-red);   text-shadow: 0 0 8px rgba(255,59,92,.8), 0 0 30px rgba(255,59,92,.45); }
+
+.panel {
+  background: linear-gradient(160deg, var(--bg-panel), var(--bg-card));
+  border: 1px solid rgba(255, 47, 179, .25);
+  border-radius: 1rem;
+  box-shadow: 0 0 25px rgba(122, 44, 191, .25), inset 0 0 40px rgba(0,0,0,.35);
+}
+
+.panel-blue  { border-color: rgba(41,216,255,.3); }
+.panel-green { border-color: rgba(57,255,142,.3); }
+
+/* ---------- buttons ------------------------------------------ */
+
+.btn {
+  border-radius: .75rem;
+  font-weight: 800;
+  letter-spacing: .03em;
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+  cursor: pointer;
+  user-select: none;
+}
+.btn:active { transform: scale(.96); }
+.btn:disabled { opacity: .35; cursor: not-allowed; filter: grayscale(.6); }
+
+.btn-pink  { background: var(--neon-pink);  color: #1a0212; box-shadow: 0 0 18px rgba(255,47,179,.5); }
+.btn-blue  { background: var(--neon-blue);  color: #04202a; box-shadow: 0 0 18px rgba(41,216,255,.5); }
+.btn-green { background: var(--neon-green); color: #05230f; box-shadow: 0 0 18px rgba(57,255,142,.5); }
+.btn-ghost { background: transparent; color: var(--ink); border: 1px solid rgba(157,140,194,.5); }
+.btn-red   { background: var(--neon-red);   color: #2a040c; box-shadow: 0 0 18px rgba(255,59,92,.5); }
+
+/* Player answer buttons — huge tap targets */
+.answer-btn {
+  border: 2px solid rgba(41,216,255,.4);
+  background: linear-gradient(160deg, #1a0f30, #241245);
+  border-radius: 1rem;
+  transition: transform .1s ease, border-color .15s ease, box-shadow .15s ease;
+}
+.answer-btn:active { transform: scale(.97); }
+.answer-btn.picked {
+  border-color: var(--neon-pink);
+  box-shadow: 0 0 24px rgba(255,47,179,.6);
+  animation: pop .25s ease;
+}
+.answer-btn.correct-reveal {
+  border-color: var(--neon-green);
+  box-shadow: 0 0 30px rgba(57,255,142,.7);
+  animation: pop .35s ease;
+}
+.answer-btn.wrong-reveal { opacity: .35; }
+
+/* ---------- animations ---------------------------------------- */
+
+@keyframes pop     { 0% { transform: scale(.85); } 60% { transform: scale(1.06); } 100% { transform: scale(1); } }
+@keyframes shake   { 0%,100% { transform: translateX(0); } 20%,60% { transform: translateX(-10px); } 40%,80% { transform: translateX(10px); } }
+@keyframes flicker { 0%,100% { opacity: 1; } 92% { opacity: 1; } 93% { opacity: .4; } 94% { opacity: 1; } 97% { opacity: .6; } 98% { opacity: 1; } }
+@keyframes pulse-glow {
+  0%,100% { text-shadow: 0 0 8px rgba(255,47,179,.8), 0 0 30px rgba(255,47,179,.45); }
+  50%     { text-shadow: 0 0 16px rgba(255,47,179,1), 0 0 60px rgba(255,47,179,.8); }
+}
+@keyframes slide-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes dq-strobe {
+  0%, 100% { background: #3d000c; }
+  50%      { background: #6e0016; }
+}
+@keyframes tick-danger {
+  0%,100% { transform: scale(1); }
+  50%     { transform: scale(1.12); }
+}
+@keyframes fire { 0%,100% { transform: rotate(-6deg) scale(1); } 50% { transform: rotate(6deg) scale(1.2); } }
+
+.anim-pop      { animation: pop .3s ease; }
+.anim-shake    { animation: shake .45s ease; }
+.anim-flicker  { animation: flicker 4s infinite; }
+.anim-pulse    { animation: pulse-glow 1.6s infinite; }
+.anim-slide-up { animation: slide-up .4s ease both; }
+.anim-fire     { display: inline-block; animation: fire .5s infinite; }
+
+/* Countdown turns angry in the final 10 seconds */
+.timer-danger { color: var(--neon-red) !important;
+  text-shadow: 0 0 12px rgba(255,59,92,.9), 0 0 40px rgba(255,59,92,.6) !important;
+  animation: tick-danger 1s infinite; }
+
+/* Full-screen disqualification lockout */
+.dq-screen { animation: dq-strobe 1.2s infinite; }
+
+/* Leaderboard rows animate position changes via FLIP (JS sets the
+   transform); this transition makes the shift dramatic. */
+.lb-row { transition: transform .8s cubic-bezier(.2, .9, .25, 1.2); will-change: transform; }
+.lb-row.top-1 { border-color: var(--neon-gold);  box-shadow: 0 0 24px rgba(255,210,63,.4); }
+.lb-row.top-2 { border-color: #cfd8ff; }
+.lb-row.top-3 { border-color: #d59d64; }
+
+/* Scanline overlay for the big screen — pure vibes */
+.scanlines::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 50;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,.12) 0 1px, transparent 1px 3px);
+}
+
+/* QR code container */
+#qrcode { background: #fff; padding: 14px; border-radius: 12px;
+  box-shadow: 0 0 40px rgba(41,216,255,.55); display: inline-block; }
+#qrcode img, #qrcode canvas { display: block; }
+
+input, select {
+  background: #120a22; border: 1px solid rgba(157,140,194,.4);
+  border-radius: .6rem; color: var(--ink); padding: .6rem .8rem;
+}
+input:focus { outline: 2px solid var(--neon-blue); border-color: transparent; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: #3a2364; border-radius: 4px; }
