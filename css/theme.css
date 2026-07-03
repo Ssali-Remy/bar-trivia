@@ -1,48 +1,79 @@
 /* =============================================================
-   BAR TRIVIA — "NEON CYBER-PUB" THEME
-   Deep blacks & purples, neon pink / green / blue accents.
-   Tailwind (CDN) handles layout; this file owns the vibe.
+   TAMADUNI HUB — TRIVIA THEME
+   Palette sampled from the Tamaduni Hub logo: bold gold on black,
+   warm cream ink. Tailwind (CDN) handles layout; this file owns
+   the vibe. Class names (neon-pink, btn-blue, panel-blue, etc.)
+   are kept from the original build so JS never has to change —
+   only the design tokens they resolve to are new.
    ============================================================= */
 
 :root {
-  --bg-deep:    #0a0612;
-  --bg-panel:   #150b26;
-  --bg-card:    #1d1135;
-  --neon-pink:  #ff2fb3;
-  --neon-blue:  #29d8ff;
-  --neon-green: #39ff8e;
-  --neon-gold:  #ffd23f;
-  --neon-red:   #ff3b5c;
-  --ink:        #f4ecff;
-  --ink-dim:    #9d8cc2;
+  --bg-deep:    #0a0805;
+  --bg-panel:   #171008;
+  --bg-card:    #201810;
+  --neon-pink:  #fdc733;   /* brand gold — primary accent (was pink) */
+  --neon-blue:  #ffe9b0;   /* warm cream — secondary accent (was cyan) */
+  --neon-green: #39ff8e;   /* correct / active — unchanged */
+  --neon-gold:  #ffd966;   /* highlight gold — 1st place, double down */
+  --neon-red:   #ff3b5c;   /* wrong / disqualified — unchanged */
+  --ink:        #fff8e7;
+  --ink-dim:    #b8a87c;
+  --tam-black:  #060709;   /* true black from the logo mark */
 }
 
 html, body {
   background:
-    radial-gradient(1200px 600px at 80% -10%, rgba(122, 44, 191, .25), transparent 60%),
-    radial-gradient(900px 500px at 10% 110%, rgba(41, 216, 255, .12), transparent 60%),
+    radial-gradient(1200px 600px at 80% -10%, rgba(253, 199, 51, .16), transparent 60%),
+    radial-gradient(900px 500px at 10% 110%, rgba(255, 233, 176, .08), transparent 60%),
     var(--bg-deep);
   color: var(--ink);
   font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
   min-height: 100%;
 }
 
+/* ---------- brand wordmark ------------------------------------ */
+/* Stacked "TAMA / DUNI" wordmark + "HUB" pill, echoing the logo's
+   bold rounded lettering and layout without needing a raster file. */
+
+.tamaduni-logo {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: .5rem;
+  font-family: "Fredoka", "Segoe UI", sans-serif;
+}
+.tamaduni-logo .tl-word {
+  font-weight: 700;
+  line-height: .82;
+  letter-spacing: .01em;
+  color: var(--ink);
+}
+.tamaduni-logo .tl-hub {
+  background: var(--neon-pink);
+  color: var(--tam-black);
+  font-weight: 700;
+  font-family: "Fredoka", "Segoe UI", sans-serif;
+  padding: .15rem .6rem;
+  border-radius: 999px;
+  margin-bottom: .25em;
+  white-space: nowrap;
+}
+
 /* ---------- neon text & panels ------------------------------- */
 
-.neon-pink  { color: var(--neon-pink);  text-shadow: 0 0 8px rgba(255,47,179,.8), 0 0 30px rgba(255,47,179,.45); }
-.neon-blue  { color: var(--neon-blue);  text-shadow: 0 0 8px rgba(41,216,255,.8), 0 0 30px rgba(41,216,255,.45); }
+.neon-pink  { color: var(--neon-pink);  text-shadow: 0 0 8px rgba(253,199,51,.8), 0 0 30px rgba(253,199,51,.45); }
+.neon-blue  { color: var(--neon-blue);  text-shadow: 0 0 8px rgba(255,233,176,.8), 0 0 30px rgba(255,233,176,.4); }
 .neon-green { color: var(--neon-green); text-shadow: 0 0 8px rgba(57,255,142,.8), 0 0 30px rgba(57,255,142,.45); }
-.neon-gold  { color: var(--neon-gold);  text-shadow: 0 0 8px rgba(255,210,63,.8), 0 0 30px rgba(255,210,63,.45); }
+.neon-gold  { color: var(--neon-gold);  text-shadow: 0 0 8px rgba(255,217,102,.8), 0 0 30px rgba(255,217,102,.45); }
 .neon-red   { color: var(--neon-red);   text-shadow: 0 0 8px rgba(255,59,92,.8), 0 0 30px rgba(255,59,92,.45); }
 
 .panel {
   background: linear-gradient(160deg, var(--bg-panel), var(--bg-card));
-  border: 1px solid rgba(255, 47, 179, .25);
+  border: 1px solid rgba(253, 199, 51, .25);
   border-radius: 1rem;
-  box-shadow: 0 0 25px rgba(122, 44, 191, .25), inset 0 0 40px rgba(0,0,0,.35);
+  box-shadow: 0 0 25px rgba(253, 199, 51, .12), inset 0 0 40px rgba(0,0,0,.35);
 }
 
-.panel-blue  { border-color: rgba(41,216,255,.3); }
+.panel-blue  { border-color: rgba(255,233,176,.3); }
 .panel-green { border-color: rgba(57,255,142,.3); }
 
 /* ---------- buttons ------------------------------------------ */
@@ -58,23 +89,23 @@ html, body {
 .btn:active { transform: scale(.96); }
 .btn:disabled { opacity: .35; cursor: not-allowed; filter: grayscale(.6); }
 
-.btn-pink  { background: var(--neon-pink);  color: #1a0212; box-shadow: 0 0 18px rgba(255,47,179,.5); }
-.btn-blue  { background: var(--neon-blue);  color: #04202a; box-shadow: 0 0 18px rgba(41,216,255,.5); }
+.btn-pink  { background: var(--neon-pink);  color: var(--tam-black); box-shadow: 0 0 18px rgba(253,199,51,.5); }
+.btn-blue  { background: var(--neon-blue);  color: var(--tam-black); box-shadow: 0 0 18px rgba(255,233,176,.5); }
 .btn-green { background: var(--neon-green); color: #05230f; box-shadow: 0 0 18px rgba(57,255,142,.5); }
-.btn-ghost { background: transparent; color: var(--ink); border: 1px solid rgba(157,140,194,.5); }
+.btn-ghost { background: transparent; color: var(--ink); border: 1px solid rgba(184,168,124,.5); }
 .btn-red   { background: var(--neon-red);   color: #2a040c; box-shadow: 0 0 18px rgba(255,59,92,.5); }
 
 /* Player answer buttons — huge tap targets */
 .answer-btn {
-  border: 2px solid rgba(41,216,255,.4);
-  background: linear-gradient(160deg, #1a0f30, #241245);
+  border: 2px solid rgba(255,233,176,.35);
+  background: linear-gradient(160deg, #1c160c, #241c10);
   border-radius: 1rem;
   transition: transform .1s ease, border-color .15s ease, box-shadow .15s ease;
 }
 .answer-btn:active { transform: scale(.97); }
 .answer-btn.picked {
   border-color: var(--neon-pink);
-  box-shadow: 0 0 24px rgba(255,47,179,.6);
+  box-shadow: 0 0 24px rgba(253,199,51,.6);
   animation: pop .25s ease;
 }
 .answer-btn.correct-reveal {
@@ -90,8 +121,8 @@ html, body {
 @keyframes shake   { 0%,100% { transform: translateX(0); } 20%,60% { transform: translateX(-10px); } 40%,80% { transform: translateX(10px); } }
 @keyframes flicker { 0%,100% { opacity: 1; } 92% { opacity: 1; } 93% { opacity: .4; } 94% { opacity: 1; } 97% { opacity: .6; } 98% { opacity: 1; } }
 @keyframes pulse-glow {
-  0%,100% { text-shadow: 0 0 8px rgba(255,47,179,.8), 0 0 30px rgba(255,47,179,.45); }
-  50%     { text-shadow: 0 0 16px rgba(255,47,179,1), 0 0 60px rgba(255,47,179,.8); }
+  0%,100% { text-shadow: 0 0 8px rgba(253,199,51,.8), 0 0 30px rgba(253,199,51,.45); }
+  50%     { text-shadow: 0 0 16px rgba(253,199,51,1), 0 0 60px rgba(253,199,51,.8); }
 }
 @keyframes slide-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
 @keyframes dq-strobe {
@@ -122,8 +153,8 @@ html, body {
 /* Leaderboard rows animate position changes via FLIP (JS sets the
    transform); this transition makes the shift dramatic. */
 .lb-row { transition: transform .8s cubic-bezier(.2, .9, .25, 1.2); will-change: transform; }
-.lb-row.top-1 { border-color: var(--neon-gold);  box-shadow: 0 0 24px rgba(255,210,63,.4); }
-.lb-row.top-2 { border-color: #cfd8ff; }
+.lb-row.top-1 { border-color: var(--neon-gold);  box-shadow: 0 0 24px rgba(255,217,102,.4); }
+.lb-row.top-2 { border-color: #e8e2d0; }
 .lb-row.top-3 { border-color: #d59d64; }
 
 /* Scanline overlay for the big screen — pure vibes */
@@ -134,14 +165,14 @@ html, body {
 
 /* QR code container */
 #qrcode { background: #fff; padding: 14px; border-radius: 12px;
-  box-shadow: 0 0 40px rgba(41,216,255,.55); display: inline-block; }
+  box-shadow: 0 0 40px rgba(253,199,51,.5); display: inline-block; }
 #qrcode img, #qrcode canvas { display: block; }
 
 input, select {
-  background: #120a22; border: 1px solid rgba(157,140,194,.4);
+  background: #150f08; border: 1px solid rgba(184,168,124,.4);
   border-radius: .6rem; color: var(--ink); padding: .6rem .8rem;
 }
-input:focus { outline: 2px solid var(--neon-blue); border-color: transparent; }
+input:focus { outline: 2px solid var(--neon-pink); border-color: transparent; }
 
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-thumb { background: #3a2364; border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: #4a3a1a; border-radius: 4px; }

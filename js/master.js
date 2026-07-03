@@ -1,5 +1,5 @@
 /* =============================================================
-   BAR TRIVIA — QUIZ MASTER DASHBOARD
+   TAMADUNI TRIVIA — QUIZ MASTER DASHBOARD
    The single source of authority: starts/pauses the game,
    advances questions, reveals + scores answers, manages teams
    (lock / re-admit / score overrides), and runs Sudden Death.

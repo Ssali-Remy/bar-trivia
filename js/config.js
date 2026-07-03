@@ -1,5 +1,5 @@
 /* =============================================================
-   BAR TRIVIA — GLOBAL CONFIG
+   TAMADUNI TRIVIA — GLOBAL CONFIG
    1. Create a Firebase project (see README.md).
    2. Paste your web-app config object below.
    3. Deploy to GitHub Pages. Done.

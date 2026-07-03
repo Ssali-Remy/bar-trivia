@@ -1,7 +1,10 @@
-# 🍻 NEON TRIVIA — Bar Quiz Night
+# 🍻 TAMADUNI TRIVIA — Bar Quiz Night
 
-A real-time, multi-device trivia app for bar environments. Pure static frontend
+A real-time, multi-device trivia app built for **Tamaduni Hub**. Pure static frontend
 (GitHub Pages) + Firebase Firestore free tier for real-time sync. No server, no build step.
+
+Theme is sampled straight from the Tamaduni Hub logo: gold `#FDC733` on black `#060709`,
+warm cream ink `#FFF8E7`, with green/red kept for correct/wrong and success/danger states.
 
 | Interface | URL | Purpose |
 |---|---|---|

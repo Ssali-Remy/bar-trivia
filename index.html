@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neon Trivia — Bar Quiz Night</title>
+  <title>Tamaduni Trivia — Bar Quiz Night</title>
   <script>
     // ?role= router so a single QR/base URL can deep-link each interface:
     //   index.html?role=master  -> master.html
@@ -15,12 +15,18 @@
     }
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/theme.css" />
 </head>
 <body class="min-h-screen flex items-center justify-center p-6">
   <main class="max-w-3xl w-full text-center">
-    <h1 class="text-5xl md:text-7xl font-black neon-pink anim-flicker mb-2">NEON TRIVIA</h1>
-    <p class="text-lg neon-blue mb-10 tracking-widest uppercase">Bar Quiz Night · Pick your poison</p>
+    <div class="tamaduni-logo justify-center mb-3 anim-flicker" style="font-size:3.2rem">
+      <span class="tl-word">TAMA<br>DUNI</span>
+      <span class="tl-hub" style="font-size:1rem">HUB</span>
+    </div>
+    <p class="text-lg neon-blue mb-10 tracking-widest uppercase">Trivia Night · Pick your poison</p>
 
     <div class="grid md:grid-cols-3 gap-6">
       <a href="play.html" class="panel panel-green p-8 block hover:scale-105 transition-transform">

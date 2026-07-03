@@ -1,5 +1,5 @@
 /* =============================================================
-   BAR TRIVIA — QUESTION BANK
+   TAMADUNI TRIVIA — QUESTION BANK
    5 rounds x 10 questions, 4 options each. `correct` is the
    0-based index into `options`. Swap these out freely — the
    engine only cares about the shape of the data.

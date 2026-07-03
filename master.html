@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neon Trivia — Quiz Master</title>
+  <title>Tamaduni Trivia — Quiz Master</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/theme.css" />
 </head>
 <body class="min-h-screen p-4 md:p-6">
@@ -12,6 +15,10 @@
   <!-- ============ PIN GATE ============ -->
   <section id="view-pin" class="hidden min-h-screen flex items-center justify-center">
     <div class="panel p-8 w-full max-w-xs text-center">
+      <div class="tamaduni-logo justify-center mb-3" style="font-size:1.8rem">
+        <span class="tl-word">TAMA<br>DUNI</span>
+        <span class="tl-hub" style="font-size:.6rem">HUB</span>
+      </div>
       <h1 class="text-2xl font-black neon-pink mb-4">🎙️ QUIZ MASTER</h1>
       <input id="pin-input" type="password" inputmode="numeric" placeholder="PIN"
              class="w-full text-center text-2xl mb-4" />
@@ -23,7 +30,7 @@
   <!-- ============ DASHBOARD ============ -->
   <main id="view-dash" class="hidden max-w-7xl mx-auto">
     <header class="flex flex-wrap items-center justify-between gap-4 mb-6">
-      <h1 class="text-3xl font-black neon-pink">🎙️ QM CONTROL ROOM</h1>
+      <h1 class="text-3xl font-black neon-pink">🎙️ TAMADUNI QM CONTROL ROOM</h1>
       <div class="flex items-center gap-4">
         <span id="m-phase" class="px-3 py-1 rounded-full text-sm font-bold border border-current neon-blue uppercase"></span>
         <span id="m-timer" class="text-3xl font-black neon-green tabular-nums">—</span>

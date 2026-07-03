@@ -1,5 +1,5 @@
 /* =============================================================
-   BAR TRIVIA — BIG SCREEN DISPLAY
+   TAMADUNI TRIVIA — BIG SCREEN DISPLAY
    Projected view: giant QR to join, live countdown + question,
    FLIP-animated leaderboard, sudden death drama, winner podium.
    Never shows the correct answer until the QM reveals it.

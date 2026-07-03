@@ -1,5 +1,5 @@
 /* =============================================================
-   BAR TRIVIA — SHARED CORE
+   TAMADUNI TRIVIA — SHARED CORE
    Firebase bootstrap + helpers used by all three interfaces.
    Load order on every page:
      firebase-app-compat.js -> firebase-firestore-compat.js

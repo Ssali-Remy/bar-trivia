@@ -1,5 +1,5 @@
 /* =============================================================
-   BAR TRIVIA — PLAYER / TEAM INTERFACE
+   TAMADUNI TRIVIA — PLAYER / TEAM INTERFACE
    Mobile-first. Registers a team, renders questions with 4 big
    tap targets, enforces the anti-cheat lockout, and mirrors the
    game state driven by the Quiz Master in real time.
