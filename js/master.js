@@ -22,6 +22,10 @@
     subscribe();
   }
 
+  // ?pin=<QM_PIN> lets the QM bookmark a direct link to the dashboard.
+  if (new URLSearchParams(location.search).get("pin") === QM_PIN) {
+    sessionStorage.setItem("bt_qm", "1");
+  }
   if (sessionStorage.getItem("bt_qm") === "1") unlock();
   else $("#view-pin").classList.remove("hidden");
 

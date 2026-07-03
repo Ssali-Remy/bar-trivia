@@ -11,7 +11,10 @@
   /* ---------- local team identity ---------------------------- */
   // The team lives in localStorage so a page refresh (or a re-scan
   // of the QR after re-admission) picks the same team back up.
+  // ?team=<id> lets the QM hand a team a rejoin link for a new phone.
   const LS_KEY = "bt_team_id";
+  const urlTeam = new URLSearchParams(location.search).get("team");
+  if (urlTeam) localStorage.setItem(LS_KEY, urlTeam);
   let teamId  = localStorage.getItem(LS_KEY);
   let game    = null;   // latest game doc
   let team    = null;   // latest own team doc
